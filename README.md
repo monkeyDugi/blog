@@ -6,9 +6,7 @@
 | --- | --- | --- |
 | main | 운영 환경 |  |
 | dev | 개발 환경 | 최신 main 브랜치에서 만든다. main 브랜치에 머지하면 최신 코드를 유지 한다. |
-| feat/14/기능 | 신규 기능 개발 | - 최신 dev 브랜치에서 만든다.
-- dev 브랜치에서 머지하면 삭제한다.
-- issue 번호로 브랜치를 생성한다. |
+| feat/14/기능 | 신규 기능 개발 | - 최신 dev 브랜치에서 만든다.  - issue 번호로 브랜치를 생성한다. - dev 브랜치에서 머지하면 삭제한다.|
 - [이슈 기반 브랜치 전략을 사용한다.](https://junshock5.tistory.com/82)
 - 네이밍 규칙
   - **EX) fix/10[이슈 번호]/login**
@@ -16,7 +14,9 @@
 - 개발할 브랜치를 dev 아래에서 생성하고 dev로 pr한다.
 - 운영에 배포할 것들은 dev → main으로 pr한다.
 - pr 요청 시 assinge, milestone, label을 등록한다.(이슈 등록과 동일)
-- [머지되면 브랜치는 자동 삭제된다.](https://earth-95.tistory.com/101)
+- [`머지되면 브랜치는 자동 삭제된다.`](https://earth-95.tistory.com/101)
+  - dev → main 병합 시 dev도 삭제되기 때문에 아직 적용하지 못했다.
+    알아내면 적용해야한다.
 - 실제 운영 배포 시 main을 pull 받아 자동화한다.
 - [github 셋팅에서 dev와 main은 push를 막는다.](https://hong-dev.github.io/bftest/master_branch/)
 
@@ -114,5 +114,6 @@
 
 4. Assignees는 merge를 진행한다.
   - `Assignees가 두 명 이상일 경우 모두 merge를 수락해야 merge가 되어야 하는 것 같은데 고민해봐야할 부분이다.`
-  - [merge가 되면 해당 브랜치는 자동을 삭제된다.](https://earth-95.tistory.com/101)
+  - [merge가 되면 해당 브랜치는 자동을 삭제](https://earth-95.tistory.com/101)되어야 하는 것이 목표이다.  
+    문제는 dev → main 병합 시 dev가 삭제되기 때문에 해결할 목표이다.
 5. 운영 서버에 배포를 하려면 dev → main으로 PR하고, 운영 서버에서 main을 pull하여 자동화 배포를 한다.
